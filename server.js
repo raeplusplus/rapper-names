@@ -23,11 +23,11 @@ const rappers = {
     }
 }
 
-app.get('http://rapper-names-test-api.herokuapp.com/', (request, response)=>{
+app.get('/', (request, response)=>{
     response.sendFile(__dirname + '/index.html') 
 })
 
-app.get('http://rapper-names-test-api.herokuapp.com/api/:rapperName', (request, response)=>{
+app.get('/api/:rapperName', (request, response)=>{
     const rappersName = request.params.rapperName.toLowerCase()
     if(rappers[rappersName]){
         response.json((rappers[rappersName]))
