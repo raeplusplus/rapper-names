@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const PORT = 8000
+
+app.use(cors())
 
 const rappers = {
     '21 savage':{
@@ -20,11 +23,11 @@ const rappers = {
     }
 }
 
-app.get('/', (request, response)=>{
+app.get('http://rapper-names-test-api.herokuapp.com/', (request, response)=>{
     response.sendFile(__dirname + '/index.html') 
 })
 
-app.get('/api/:rapperName', (request, response)=>{
+app.get('http://rapper-names-test-api.herokuapp.com/api/:rapperName', (request, response)=>{
     const rappersName = request.params.rapperName.toLowerCase()
     if(rappers[rappersName]){
         response.json((rappers[rappersName]))
